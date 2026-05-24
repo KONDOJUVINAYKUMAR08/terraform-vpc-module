@@ -27,7 +27,7 @@ resource "aws_subnet" "public" {
     map_public_ip_on_launch = true
 
     tags = {
-        Name = "${var.project_name}-${var.environment}-${each.key}"
+        Name = "${var.project_name}-${var.environment}-public-${each.key}"
         Type = "Public"
     }
 }
@@ -40,7 +40,7 @@ resource "aws_subnet" "web" {
     availability_zone = each.value.az
 
     tags = {
-        Name = "${var.project_name}-${var.environment}-${each.key}"
+        Name = "${var.project_name}-${var.environment}-web-${each.key}"
         Type = "Web-Private"
     }
 }
@@ -53,7 +53,7 @@ resource "aws_subnet" "app" {
     availability_zone = each.value.az
 
     tags = {
-        Name = "${var.project_name}-${var.environment}-${each.key}"
+        Name = "${var.project_name}-${var.environment}-app-${each.key}"
         Type = "App-Private"
     }
 }
@@ -66,7 +66,7 @@ resource "aws_subnet" "db" {
     availability_zone = each.value.az
 
     tags = {
-        Name = "${var.project_name}-${var.environment}-${each.key}"
+        Name = "${var.project_name}-${var.environment}-db-${each.key}"
         Type = "DB-Private"
     }
 }
