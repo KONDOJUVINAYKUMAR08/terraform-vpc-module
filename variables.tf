@@ -10,18 +10,27 @@ variable "aws_region" {
 variable "vpc_cidr" {
     type = string
 }
-variable "public_subnet_cidrs" {
-    type = list(string)
+variable "public_subnets" {
+    type = map(object({
+        cidr_block = string
+        az = string
+    }))
 }
-variable "web_subnet_cidrs" {
-    type = list(string)
+variable "web_subnets" {
+    type = map(object({ 
+        cidr_block = string
+        az = string 
+    }))
 }
-variable "app_subnet_cidrs"{
-    type = list(string)
+variable "app_subnets"{
+    type = map(object({
+        cidr_block = string
+        az = string
+    }))
 }
-variable "db_subnet_cidrs" {
-    type = list(string)
-}
-variable "availability_zones" {
-    type = list(string)
+variable "db_subnets" {
+    type = map(object({
+        cidr_block = string
+        az = string
+    }))
 }
